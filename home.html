@@ -1,0 +1,646 @@
+   <!DOCTYPE html>
+   <html>
+<head>
+    <title>Wellcome to my website</title>
+</head>
+<body>
+    <h1>Wellcome</h1>
+    <p>this is my first website. Hope you like it✅.</p>
+    <p>good luck.</p>
+    <h2><a href="https://www.youtube.com/channel/UCccpFMnmOJ9olKOhE121yLA"> adhm💚💚💚 </a></h2>
+    <h2><a href="https://www.youtube.com/channel/UCO3f1i7IGzeZJrO6RFQCNTA"> ma7💚💚💚 </a></h2>
+    <h2><a href="https://www.youtube.com/channel/UCI3dRTx8M_FGsmZGyGka30g"> maz-trios💚💚💚 </a></h2>
+    <h2><a href="https://www.youtube.com/channel/UCYh8mdjY54lEL3DDuAZkLbA/videos"> azooz💚💚💚 </a></h2>
+<h1><mark>subscribe to all channels please </mark></h1>
+<p>Error your browser does not support fire beats like this one! ! ! !</p>
+<button onclick="displaycount()"> Click </button>>
+<p id="carrier"> 0  </p>
+
+<script>
+
+var count =(function () {
+
+var counter = 0;
+return function () {return counter +=1;}
+
+
+})();
+
+function displaycount(){
+
+document.getElementById("carrier").innerHTML = count();
+
+}
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+<audio src="file:///C:/Users/mmael/Downloads/bensound-anewbeginning.mp3" controls>  
+
+    {
+        "name": "memechat",
+        "version": "1.0.0",
+        "description": "a fun chatting webpage for my boiizzz in the comments",
+        "main": "memeServer.js",
+        "scripts": {
+          "test": "echo \"Error: no test specified\" && exit 1",
+          "start": "node server.js"
+        },
+        "author": "rhymbil",
+        "license": "ISC",
+        "dependencies": {
+          "balanced-match": "^1.0.0",
+          "express": "*",
+          "socket.io": "*"
+        }
+      }
+
+      /How to make a meme server courtesy of RhymBil
+var express = require("express"); 
+var app = express();
+var server = require("http").createServer(app);
+var io = require("socket.io").listen(server);
+//setting the required variables
+
+memers = []; //users array
+memeConnections = []; //connections array
+
+server.listen(process.env.PORT || 2019);  // It will run on localhost:(any number)
+console.log("Meme Server Is Up");
+
+app.get("/", function(req, res){
+	res.sendFile(__dirname + "/index.html"); //links to html file CHANGE /index.html to you actually html file
+	
+});
+	
+io.sockets.on("connection", function(socket){
+	//connection stuff
+	memeConnections.push(socket);
+	console.log("Memers connected: %s", memeConnections.length);
+	
+	// disconnection stuff
+	socket.on("disconnect", function(data){
+		
+		memers.splice(memers.indexOf(socket.username), 1); //accessing the array memers
+		
+		
+	memeConnections.splice(memeConnections.indexOf(socket),1);
+	console.log("Memers disconnected: %s ", memeConnections.length);
+	});
+	
+	//send dem meme messages
+	socket.on("send meme message", function(data){ 
+		console.log(data);// shows what the memers typed in console
+		io.sockets.emit("new meme message", {msg: data});
+	});
+});
+
+
+<html>
+	<head>
+		<title> MemeChat</title>
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+	</head>
+	
+<body>
+
+<div id="memechat"> <p id="p">Meme Chat </p><p id="pr"> By RhymBil</p></div> 
+<br>
+<br>
+<div id="holder">
+	<form id="messageForm">
+						
+
+			<input type="text" id="messageInput" placeholder="Type..."/>
+			<button type="submit"  id="btn" onclick="hidel()"> Send </button>
+
+	</form>
+	<div class="chat" id="chat" style="overflow-y:scroll; height:450px;">
+
+	
+<div id="messageBox">
+
+</div>
+</div>
+							<button type="submit"  id="btn1" onclick="showl()"> Show All </button>
+
+
+</body>
+
+
+
+
+
+
+<script>
+$(function(){
+var socket = io.connect();  //connects to socket
+var $messageForm = $("#messageForm"); //ref to the div message form
+var $messageInput = $("#messageInput"); //ref to input box with id message
+var $chat = $("#chat"); //ref to div chat
+var test = $messageInput.val("");
+
+$messageForm.submit(function(e){
+e.preventDefault();
+socket.emit("send meme message", $messageInput.val());
+$messageInput.val("");
+
+
+});
+socket.on("new meme message", function(data){
+
+
+if(data.msg.length > 0){
+$chat.append('<br>'  +'<div id="circle"> ' + '<textarea id="t" readonly>' + data.msg + '</textarea>'+' </div>' + '<br>' );
+}
+});
+
+});
+
+showlog = false;
+window.setInterval(function() {
+if(showlog == false){
+  var chat = document.getElementById("chat");
+  chat.scrollTop = chat.scrollHeight;
+  }
+}, 4);
+
+function showl(){
+showlog = true;
+
+}
+function hidel(){
+var chat = document.getElementById("chat");
+  chat.scrollTop = chat.scrollHeight;
+showlog = false;
+}
+
+</script>
+
+
+
+
+
+
+
+
+
+<style>
+body{
+background-color:#1abc9c;
+
+}
+#p{
+margin-top:9px;
+}
+#pr{
+font-size:12px;
+margin-top:-34px;
+margin-left: 82px;
+}
+#memechat{
+background-color:#e74c3c;
+font-family: verdana;
+color:white;
+font-size: 30px;
+text-align:center;
+border: 2px solid white;
+border-radius:15px;
+width:190px;
+height:60px;
+
+}
+
+#btn{
+background-color: white;
+font-size:15px;
+font-family: Verdana;
+color:black;
+width:56px;
+height:51px;
+text-align: center;
+margin-left:0px;
+border-radius:10px;
+outline:none;
+border: 2px solid #e74c3c;
+
+}
+#btn1{
+background-color: white;
+font-size:15px;
+font-family: Verdana;
+color:black;
+width:100px;
+height:40px;
+text-align: center;
+margin-left:1040px;
+margin-top: -40px;
+border-radius:10px;
+outline:none;
+border: 2px solid #e74c3c;
+
+}
+#messageInput{
+ margin-left: 532px;
+text-align:center;
+border-radius:10px;
+outline:none;
+shadow:none;
+font-size:15px;
+font-family: Verdana;
+color:black;
+width:250px;
+height:50px;
+}
+
+
+#t {
+text-align:left;
+font-size:15px;
+font-family: Verdana;
+color:black;
+border: 2px solid #f1c40f;
+  margin-top: -5px;
+  margin-left: 72px;
+  width:200px;
+  height:90px;
+  background-color:white;
+  border-radius:12px;
+  resize: none;
+      outline: none;
+
+}
+#chat{
+
+border: 6px solid white;
+width:700px;
+background-color:#e74c3c;
+margin:auto;
+border-radius: 10px;
+}
+
+::-webkit-scrollbar { 
+display: none;
+}
+#circle{
+width:50px;
+height:50px;
+border-radius:100px;
+border: 5px solid white;
+margin-left:25px;
+background-color:#f1c40f;
+
+}
+
+
+</style>
+
+</html>	
+
+
+
+
+
+
+
+
+
+
+Updated MemeChat.html
+
+<html>
+	<head>
+		<title> MemeChat</title>
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+	</head>
+	
+<body>
+
+<div id="memechat"> <p id="p">Meme Chat </p><p id="pr"> By RhymBil</p></div> 
+<br>
+<br>
+<div id="holder">
+	<form id="messageForm">
+						
+
+			<input type="text" id="messageInput" placeholder="Type..."/>
+			<button type="submit"  id="btn" onclick="hidel()"> Send </button>
+
+	</form>
+	
+	<div class="chat" id="chat" style="overflow-y:scroll; height:450px;">
+
+	
+<div id="messageBox">
+
+</div>
+</div>
+
+	
+	
+	</div>
+<button type="submit"  id="btn1" onclick="showl()"> Show All </button>
+<div id="people" style="overflow-y:scroll; height:450px;">
+</body>
+
+
+
+
+
+
+<script>
+var socket = io.connect();  //connects to socket
+
+$(function(){
+var $people = $("#people");
+
+var $messageForm = $("#messageForm"); //ref to the div message form
+var $messageInput = $("#messageInput"); //ref to input box with id message
+var $chat = $("#chat"); //ref to div chat
+
+$messageForm.submit(function(e){
+e.preventDefault();
+socket.emit("send meme message", $messageInput.val());
+$messageInput.val("");
+
+
+});
+socket.on("new meme message", function(data){
+
+
+if(data.msg.length > 0){
+$chat.append('<br>'  +'<div id="circle"> ' + '<textarea id="t" readonly>' + data.msg + '</textarea>'+' </div>' + '<br>' );
+
+}
+});
+
+socket.on("new memer", function(data){
+
+$people.append('<br>'  +'<div id="circle1"> ' + ' </div>' + '<br>' );
+
+});
+
+socket.on("memer left", function(data){
+ 
+
+$("#circle1").remove();
+  
+
+});
+});
+
+
+
+
+
+
+showlog = false;
+window.setInterval(function() {
+if(showlog == false){
+  var chat = document.getElementById("chat");
+  chat.scrollTop = chat.scrollHeight;
+  
+  var people = document.getElementById("people");
+  people.scrollTop = people.scrollHeight;
+  }
+}, 4);
+
+function showl(){
+showlog = true;
+
+}
+function hidel(){
+var chat = document.getElementById("chat");
+  chat.scrollTop = chat.scrollHeight;
+  var people = document.getElementById("people");
+  people.scrollTop = people.scrollHeight;
+showlog = false;
+}
+
+
+
+
+  
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+<style>
+body{
+background-color:#1abc9c;
+
+}
+#p{
+margin-top:9px;
+}
+#people{
+
+background-color: #f1c40f;
+width:250px;
+height:440px;
+margin-left:767px;
+margin-top:-462px;
+border: 6px solid white;
+
+
+
+}
+#pr{
+font-size:12px;
+margin-top:-34px;
+margin-left: 82px;
+}
+#memechat{
+background-color:#e74c3c;
+font-family: verdana;
+color:white;
+font-size: 30px;
+text-align:center;
+border: 2px solid white;
+border-radius:15px;
+width:190px;
+height:60px;
+
+}
+
+#btn{
+background-color: white;
+font-size:15px;
+font-family: Verdana;
+color:black;
+width:56px;
+height:51px;
+text-align: center;
+margin-left:0px;
+border-radius:10px;
+outline:none;
+border: 2px solid #e74c3c;
+
+}
+#btn1{
+background-color: white;
+font-size:15px;
+font-family: Verdana;
+color:black;
+width:100px;
+height:40px;
+text-align: center;
+margin-left:1040px;
+margin-top: -40px;
+border-radius:10px;
+outline:none;
+border: 2px solid #e74c3c;
+
+}
+#messageInput{
+ margin-left: 532px;
+text-align:center;
+border-radius:10px;
+outline:none;
+shadow:none;
+font-size:15px;
+font-family: Verdana;
+color:black;
+width:250px;
+height:50px;
+}
+
+
+#t {
+text-align:left;
+font-size:15px;
+font-family: Verdana;
+color:black;
+border: 2px solid #f1c40f;
+  margin-top: -5px;
+  margin-left: 72px;
+  width:200px;
+  height:90px;
+  background-color:white;
+  border-radius:12px;
+  resize: none;
+      outline: none;
+
+}
+#chat{
+
+border: 6px solid white;
+width:459px;
+background-color:#e74c3c;
+margin:auto;
+border-radius: 10px;
+margin-left:300px;
+}
+
+::-webkit-scrollbar { 
+	display: none;
+}
+#circle{
+width:50px;
+height:50px;
+border-radius:100px;
+border: 5px solid white;
+margin-left:25px;
+background-color:#f1c40f;
+
+}
+#circle1{
+width:50px;
+height:50px;
+border-radius:100px;
+border: 5px solid white;
+margin-left:25px;
+background-color:#3498db;
+
+}
+
+</style>
+
+</html>	
+
+
+
+
+Updated memeserver.js
+
+//How to make a meme server courtesy of RhymBil
+
+var express = require("express"); 
+var app = express();
+var server = require("http").createServer(app);
+var io = require("socket.io").listen(server);
+//setting the required variables
+
+memers = []; //users array
+memeConnections = []; //connections array
+
+server.listen(process.env.PORT || 2020);  // It will run on localhost:(any number)
+console.log("Meme Server Is Up");
+
+app.get("/", function(req, res){
+
+	res.sendFile(__dirname + "/memeChattut.html"); //links to html file CHANGE /memeChattut.html to you actually html file
+	
+});
+	
+
+io.sockets.on("connection", function(socket){
+	//connection stuff
+	memeConnections.push(socket);	
+				io.sockets.emit("new memer"); //checks if anyone is online
+
+	console.log("Memers connected: %s", memeConnections.length);
+	
+
+	
+	
+	// disconnection stuff
+	socket.on("disconnect", function(data){
+		
+		memers.splice(memers.indexOf(socket.username), 1); //accessing the array memers
+		
+						io.sockets.emit("memer left"); //checks if memer left
+
+	memeConnections.splice(memeConnections.indexOf(socket),1);
+	console.log("Memers disconnected: %s ", memeConnections.length);
+	});
+	
+	//send dem meme messages
+	socket.on("send meme message", function(data){ 
+		console.log(data);// shows what the memers typed in console
+		io.sockets.emit("new meme message", {msg: data});
+	
+	
+	});
+
+
+
+	});
+
+
+
+    </audio>
+</body>
+</html>
